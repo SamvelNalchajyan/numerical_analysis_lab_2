@@ -16,6 +16,7 @@ int main()
 	{
 		std::cout << std::left << std::setw(5) << it->at(0) << " | " << std::left << std::setw(5) << it->at(1) << " | " << std::left << std::setw(5) << it->at(2) << " | " << std::left << std::setw(5) << it->at(3) << std::endl;
 	}
+	
 	std::cout << std::endl << "--------------------------------------" << std::endl;
 	std::list<std::vector<double> > main_result = numerical_main_task(N);
 	std::list<std::vector<double> >::iterator m_it;
@@ -24,7 +25,7 @@ int main()
 	{
 		std::cout << std::left << std::setw(5) << m_it->at(0) << " | " << std::left << std::setw(5) << m_it->at(1) << " | " << std::left << std::setw(5) << m_it->at(2) << " | " << std::left << std::setw(5) << m_it->at(3) << std::endl;
 	}
-
+	
 	system("pause");
 	return 0;
 }

@@ -699,7 +699,7 @@ private: System::Windows::Forms::Label^ label4;
 			i++;
 		}
 		LineItem Curve1 = panel->AddCurve("Numerical v", f1_list, Color::Blue, SymbolType::None);
-		LineItem Curve2 = panel->AddCurve("Numerical v2", f2_list, Color::Red, SymbolType::Plus);
+		LineItem Curve2 = panel->AddCurve("Numerical v2", f2_list, Color::Red, SymbolType::None);
 		LineItem Curve3 = panel2->AddCurve("Error", f3_list, Color::MediumSlateBlue, SymbolType::None);
 
 		textBox_err_main->Text = Convert::ToString(max_error);
