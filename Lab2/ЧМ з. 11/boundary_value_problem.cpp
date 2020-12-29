@@ -384,7 +384,7 @@ std::vector<double> numerical_task_n(int n)
 			}
 			else
 			{
-				double tmp = (n * (ksi - x) / k(0.5 * (x + ksi)) + (x - ksi) / k(0.5 * (x + ksi)));
+				double tmp = (n * (ksi - x) / k(0.5 * (x + ksi)) + (x + h - ksi) / k(0.5 * (x + h + ksi)));
 				a_i.push_back(1.0 / tmp);
 			}
 		}
