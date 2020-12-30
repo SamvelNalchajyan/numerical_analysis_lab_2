@@ -372,29 +372,29 @@ std::vector<double> numerical_task_n(int n)
 	double h = 1.0 / (double)n;
 	for (int i = 1; i <= n; i++)
 	{
-		if (x + h <= ksi)
+		x += h;
+		if (x <= ksi)
 		{
-			a_i.push_back(k(x + 0.5 * h));
+			a_i.push_back(k(x - 0.5 * h));
 		}
 		else
 		{
-			if (x >= ksi)
+			if (x - h >= ksi)
 			{
-				a_i.push_back(k(x + 0.5 * h));
+				a_i.push_back(k(x - 0.5 * h));
 			}
 			else
 			{
-				double tmp = (n * (ksi - x) / k(0.5 * (x + ksi)) + (x + h - ksi) / k(0.5 * (x + h + ksi)));
+				double tmp = n * ((ksi - x + h) / k(0.5 * (x - h + ksi)) + (x - ksi) / k(0.5 * (x + ksi)));
 				a_i.push_back(1.0 / tmp);
 			}
 		}
-		x += h;
 	}
 	x = 0;
 	//x = h / 2.0;
 	for (int i = 1; i < n; i++)
 	{
-		//-------------------//
+		x += h;
 		if (x + 0.5 * h <= ksi)
 		{
 			d_i.push_back(q(x));
@@ -411,9 +411,11 @@ std::vector<double> numerical_task_n(int n)
 			{
 				d_i.push_back(n * ((ksi - x + 0.5 * h) * q(0.5 * (x - 0.5 * h + ksi)) + (x + 0.5 * h - ksi) * q(0.5 * (x + 0.5 * h + ksi))));
 				fi_i.push_back(n * ((ksi - x + 0.5 * h) * f(0.5 * (x - 0.5 * h + ksi)) + (x + 0.5 * h - ksi) * f(0.5 * (x + 0.5 * h + ksi))));
+				//d_i.push_back(n * ((ksi - x + h) * q(0.5 * (x - h + ksi)) + (x - ksi) * q(0.5 * (x + ksi))));
+				//fi_i.push_back(n * ((ksi - x + h) * f(0.5 * (x - h + ksi)) + (x - ksi) * f(0.5 * (x + ksi))));
 			}
 		}
-		x += h;
+		//x += h;
 	}
 
 	// Прогонка
